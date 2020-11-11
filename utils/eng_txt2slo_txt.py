@@ -121,19 +121,21 @@ def make_dirs(source, tasks, sub_folders):
             os.makedirs(os.path.join(source, task, sf), exist_ok=True)
 
 
-source = 'combined-txt-eng-subsets'
-target = 'combined-txt-slo'
-sub_folders = ['test', 'train', 'val']
-tasks = ['WiC', 'CB', 'ReCoRD', 'BoolQ', 'MultiRC', 'COPA', 'RTE', 'WSC']
+if __name__ == '__main__':
+    # variables
+    SOURCE = 'combined-txt-eng-subsets'
+    TARGET = 'combined-txt-slo'
+    SUB_FOLDERS = ['test', 'train', 'val']
+    TASKS = ['WiC', 'CB', 'ReCoRD', 'BoolQ', 'MultiRC', 'COPA', 'RTE', 'WSC']
 
-# create dirs
-make_dirs(target, tasks, sub_folders)
+    # create dirs
+    make_dirs(TARGET, TASKS, SUB_FOLDERS)
 
-# create slo files without english text and copy constants
-create_boolq(source, target, sub_folders, task='BoolQ')
-create_cb(source, target, sub_folders, task='CB')
-create_copa(source, target, sub_folders, task='COPA')
-create_rte(source, target, sub_folders, task='RTE')
-create_wsc(source, target, sub_folders, task='WSC')
-create_multirc(source, target, sub_folders, task='MultiRC')
-create_record(source, target, sub_folders, task='ReCoRD')
+    # create slo files without english text and copy constants
+    create_boolq(SOURCE, TARGET, SUB_FOLDERS, task='BoolQ')
+    create_cb(SOURCE, TARGET, SUB_FOLDERS, task='CB')
+    create_copa(SOURCE, TARGET, SUB_FOLDERS, task='COPA')
+    create_rte(SOURCE, TARGET, SUB_FOLDERS, task='RTE')
+    create_wsc(SOURCE, TARGET, SUB_FOLDERS, task='WSC')
+    create_multirc(SOURCE, TARGET, SUB_FOLDERS, task='MultiRC')
+    create_record(SOURCE, TARGET, SUB_FOLDERS, task='ReCoRD')

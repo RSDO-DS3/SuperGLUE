@@ -25,7 +25,7 @@ def flatten_json(y):
 
 
 def jsonl2csv(json_eng, csv_eng):
-    # todo you can rewrite this function with pandas (check pandas.json_normalize)
+    # note you can rewrite this function with pandas (check pandas.json_normalize)
     nested_datasets = ['MultiRC', 'WSC', 'ReCoRD']
 
     for file in os.listdir(json_eng):
@@ -60,8 +60,13 @@ def jsonl2csv(json_eng, csv_eng):
             df.to_csv(os.path.join(csv_eng, file.split('.')[0] + '.csv'), index=False)
 
 
-for dataset in os.listdir('combined-json-eng'):
-    print(dataset)
-    json_eng = os.path.join('combined-json-eng', dataset)
-    csv_eng = os.path.join('combined-csv-eng', dataset)
-    jsonl2csv(json_eng, csv_eng)
+if __name__ == '__main__':
+    # variables
+    JSON = 'files/jsonl-eng'
+    CSV = 'files/csv-eng'
+
+    for dataset in os.listdir(JSON):
+        print(dataset)
+        json_eng = os.path.join(JSON, dataset)
+        csv_eng = os.path.join(CSV, dataset)
+        jsonl2csv(json_eng, csv_eng)

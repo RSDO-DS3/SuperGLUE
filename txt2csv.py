@@ -41,7 +41,7 @@ def txt2csv_group(task_path, save_path):
         files = []
 
         for file in os.listdir(os.path.join(task_path, task)):
-            print(file, task)
+            # print(file, task)
             with open(os.path.join(task_path, task, file), 'r', encoding='utf-8') as f:  # todo check encoding
                 d = {}
                 for line in f.readlines():
@@ -73,19 +73,19 @@ def txt2csv_wsc(task_path, save_path):
                     key, value = line.split(':', 1)
 
                     try:
-                        # if key == 'text' and file == '95.txt':  # Sample with mistakes (in english dataset), check it
-                        #     d['target.span1_text'] = False
-                        #     d['target.span2_text'] = False
-                        #     d['target.span1_index'] = False
-                        #     d['target.span2_index'] = False
-                        #     d['text'] = False
-                        #
-                        # elif key == 'text' and file == '392.txt':  # Sample with mistakes (in english dataset), check it
-                        #     d['target.span1_text'] = False
-                        #     d['target.span2_text'] = False
-                        #     d['target.span1_index'] = False
-                        #     d['target.span2_index'] = False
-                        #     d['text'] = False
+                        if key == 'text' and file == '95.txt':  # Sample with mistakes (in english dataset), check it
+                            d['target.span1_text'] = False
+                            d['target.span2_text'] = False
+                            d['target.span1_index'] = False
+                            d['target.span2_index'] = False
+                            d['text'] = False
+
+                        elif key == 'text' and file == '392.txt':  # Sample with mistakes (in english dataset), check it
+                            d['target.span1_text'] = False
+                            d['target.span2_text'] = False
+                            d['target.span1_index'] = False
+                            d['target.span2_index'] = False
+                            d['text'] = False
 
                         if key == 'text':
                             d['target.span1_text'] = re.findall('<w1> (.+?) <\/w1>', value)[0]
@@ -215,26 +215,30 @@ def txt2csv_record(task_path, save_path):
         df.sort_values('idx', inplace=True)
         df.to_csv(os.path.join(save_path, task + '.csv'), index=False)
 
-# variables
-tasks = ['BoolQ', 'CB', 'COPA', 'MultiRC', 'ReCoRD', 'RTE', 'WSC']
-txt_root = 'slovene-translations/txt'
-csv_root = 'slovene-translations/csv'
 
-# create empty directories
-make_dirs(csv_root, tasks)
+if __name__ == '__main__':
+    # important WSC and ReCoRD datasets contain mistakes as ORIGINAL datasets:
 
-# Group: no nesting, no indices, no NA values
-group = ['CB', 'COPA', 'RTE', 'BoolQ']
-for dataset in group:
-    print(dataset)
-    txt_eng = os.path.join(txt_root, dataset)
-    csv_eng = os.path.join(csv_root, dataset)
-    txt2csv_group(txt_eng, csv_eng)
+    # variables
+    TASKS = ['CB', 'COPA', 'MultiRC', 'ReCoRD', 'RTE', 'WSC']
+    TXT = 'files/txt-eng'
+    CSV = 'files/csv-eng-reverse'
 
-# each file has a specific format
-txt2csv_wsc(f'{txt_root}/WSC', f'{csv_root}/WSC')
-txt2csv_multirc(f'{txt_root}/MultiRC', f'{csv_root}/MultiRC')
-txt2csv_record(f'{txt_root}/ReCoRD', f'{csv_root}/ReCoRD')
+    # create empty directories
+    make_dirs(CSV, TASKS)
 
-# onyl if you have preexisting csv files
-# test_all('combined-csv-eng', 'combined-csv-eng-reverse')
+    # Group: no nesting, no indices, no NA values
+    group = ['CB', 'COPA', 'RTE', 'BoolQ']
+    for dataset in group:
+        print(dataset)
+        txt_eng = os.path.join(TXT, dataset)
+        csv_eng = os.path.join(CSV, dataset)
+        txt2csv_group(txt_eng, csv_eng)
+
+    # each file has a specific format
+    txt2csv_wsc(f'{TXT}/WSC', f'{CSV}/WSC')
+    txt2csv_multirc(f'{TXT}/MultiRC', f'{CSV}/MultiRC')
+    txt2csv_record(f'{TXT}/ReCoRD', f'{CSV}/ReCoRD')
+
+    # only if you have preexisting csv files
+    # test_all('combined-csv-eng', 'combined-csv-eng-reverse')

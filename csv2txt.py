@@ -175,28 +175,33 @@ def csv2txt_record(csv_eng, txt_eng, first_n):
                 eng.write('source:' + str(data['source']) + '\n')
 
 
-# # Group transformation (no nesting, no indices, no NA values)
-# group = ['CB', 'COPA', 'RTE']
-# for dataset in group:
-#     print(dataset)
-#     csv_eng = os.path.join('google-translations/combined-csv-eng', dataset)
-#     txt_eng = os.path.join('google-translations/combined-txt-eng', dataset)
-#     csv2txt_group(csv_eng, txt_eng)
-#
-# # WSC
-# print('wsc')
-# csv2txt_wsc('google-test/combined-csv-eng/WSC', 'google-test/combined-txt-eng/WSC')
-#
-# # Wic
-# print('wic')
-# csv2txt_wic('combined-csv-eng/WiC', 'combined-txt-eng/WiC')
-#
-# # multirc
-# print('multirc')
-# csv2txt_multirc('google-translations/combined-csv-eng/MultiRC', 'google-translations/combined-txt-eng/MultiRC')
+if __name__ == '__main__':
+    # variables
+    CSV = 'files/csv-eng'
+    TXT = 'files/txt-eng'
 
-# # record
-# print('record')
-# csv2txt_record('combined-csv-eng/ReCoRD', 'combined-txt-eng/ReCoRD', first_n=1000)  # large dataset
+    # Group transformation (no nesting, no indices, no NA values)
+    group = ['CB', 'COPA', 'RTE', 'BoolQ']
+    for dataset in group:
+        print(dataset)
+        csv_eng = os.path.join(CSV, dataset)
+        txt_eng = os.path.join(TXT, dataset)
+        csv2txt_group(csv_eng, txt_eng)
+
+    # WSC
+    print('wsc')
+    csv2txt_wsc(f'{CSV}/WSC', f'{TXT}/WSC')
+
+    # Wic
+    print('wic')
+    csv2txt_wic(f'{CSV}/WiC', f'{TXT}/WiC')
+
+    # multirc
+    print('multirc')
+    csv2txt_multirc(f'{CSV}/MultiRC', f'{TXT}/MultiRC')
+
+    # record
+    print('record')
+    csv2txt_record(f'{CSV}/ReCoRD', f'{TXT}/ReCoRD', first_n=1000)  # large dataset
 
 

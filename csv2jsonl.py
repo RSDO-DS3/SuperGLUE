@@ -39,9 +39,14 @@ def csv2jsonl(json_eng, csv_eng):
         # test_jsonl(org_json, rev_json, file)
 
 
-for dataset in os.listdir('google-translations/csv'):
-    print(dataset)
-    json_eng = os.path.join('google-translations/json', dataset)
-    csv_eng = os.path.join('google-translations/csv', dataset)
-    os.makedirs(json_eng, exist_ok=True)
-    csv2jsonl(json_eng, csv_eng)
+if __name__ == '__main__':
+    # variables
+    CSV = 'files/csv-eng-reverse'
+    JSON = 'files/jsonl-eng-reverse'
+
+    for dataset in os.listdir(CSV):
+        print(dataset)
+        json_eng = os.path.join(JSON, dataset)
+        csv_eng = os.path.join(CSV, dataset)
+        os.makedirs(json_eng, exist_ok=True)
+        csv2jsonl(json_eng, csv_eng)
