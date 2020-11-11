@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 from unflatten import unflatten
-
+import jsonlines
 
 def test_jsonl(org, rev, file):
     org = pd.read_json(org, lines=True)
@@ -19,19 +19,18 @@ def csv2jsonl(json_eng, csv_eng):
     nested_datasets = ['MultiRC', 'WSC', 'ReCoRD']
 
     for file in os.listdir(csv_eng):
-        # # todo: create nested jsonl files if you need them (UNFINISHED)
-        # if os.path.join(csv_eng, file).split('/')[-2] in nested_datasets:
-        #     df = pd.read_csv(os.path.join(csv_eng, file))
-        #     for sample in df.iterrows():
-        #         sample = sample[1].dropna()
-        #         sample = unflatten(sample.to_dict())
-        # else:
-        #    df = pd.read_csv(os.path.join(csv_eng, file))
-
-        df = pd.read_csv(os.path.join(csv_eng, file), encoding='utf-8')
-
         save_to = os.path.join(json_eng, file[:-4] + '.jsonl')
-        df.to_json(path_or_buf=save_to, orient='records', lines=True, force_ascii=False)  # force_ascii
+
+        if os.path.join(csv_eng, file).split('/')[-2] in nested_datasets:
+            df = pd.read_csv(os.path.join(csv_eng, file))
+            with jsonlines.open(save_to, mode='w') as writer:
+                for sample in df.iterrows():
+                    sample = sample[1].dropna()
+                    sample = unflatten(sample.to_dict())
+                    writer.write(sample)
+        else:
+            df = pd.read_csv(os.path.join(csv_eng, file), encoding='utf-8')
+            df.to_json(path_or_buf=save_to, orient='records', lines=True, force_ascii=False)  # force_ascii
 
         # # test (if you want to compare)
         # org_json = os.path.join('combined-json-eng', json_eng.split('/')[1], file[:-4] + '.jsonl')
