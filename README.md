@@ -1,6 +1,6 @@
-# R3.5.1 - Orodje za delo z evalvacijskimi nalogami (SuperGLUE)
+# Orodje za delo z evalvacijskimi nalogami (SuperGLUE)
 
-V tem repozitoriju se nahaja rezultat aktivnosti A3.5 - R3.5.1 Orodje za delo z evalvacijskimi nalogami in za primerjavo različnih postopkov.
+V tem repozitoriju se nahaja rezultat aktivnosti A3.5 - R3.5.1 Orodje za delo z evalvacijskimi nalogami in za primerjavo različnih postopkov, ki je nastal v okviru projekta [Razvoj slovenščine v digitalnem okolju](https://www.cjvt.si/rsdo/).
 
 #### Povezave, vezane na orodje:
 * SuperGLUE: https://super.gluebenchmark.com/tasks
