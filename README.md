@@ -20,7 +20,7 @@ python jsonl2csv.py --jsonl path/to/SuperGLUE-json --csv path/to/SuperGLUE-csv
 ```
 
 Postopek je podoben tudi pri drugih skriptah, spreminjajo se le imena argumentov.
-Na primer, prvi argument skripte, ki prevaja iz txt v csv, bo `--txt`, drugi pa pa `--csv`.
+Na primer, prvi argument skripte, ki prevaja iz txt v csv, bo `--txt`, drugi pa `--csv`.
 
 > Operacijo Razvoj slovenščine v digitalnem okolju sofinancirata Republika Slovenija in Evropska unija iz Evropskega sklada za regionalni razvoj. Operacija se izvaja v okviru Operativnega programa za izvajanje evropske kohezijske politike v obdobju 2014-2020.
 
