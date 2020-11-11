@@ -67,13 +67,13 @@ if __name__ == '__main__':
         description='Format conversion tool'
     )
 
-    parser.add_argument('--json', required=True)
+    parser.add_argument('--jsonl', required=True)
     parser.add_argument('--csv', required=True)
 
     args = parser.parse_args()
 
     # variables
-    JSON = args.json
+    JSON = args.jsonl
     CSV = args.csv
 
     for dataset in os.listdir(JSON):

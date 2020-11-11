@@ -45,13 +45,13 @@ if __name__ == '__main__':
     )
 
     parser.add_argument('--csv', required=True)
-    parser.add_argument('--json', required=True)
+    parser.add_argument('--jsonl', required=True)
 
     args = parser.parse_args()
 
     # variables
     CSV = args.csv
-    JSON = args.csv
+    JSON = args.jsonl
 
     for dataset in os.listdir(CSV):
         print(dataset)
