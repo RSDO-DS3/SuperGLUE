@@ -1,3 +1,4 @@
+import argparse
 import os
 import pandas as pd
 
@@ -176,9 +177,18 @@ def csv2txt_record(csv_eng, txt_eng, first_n):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='Format conversion tool'
+    )
+
+    parser.add_argument('--csv', required=True)
+    parser.add_argument('--txt', required=True)
+
+    args = parser.parse_args()
+
     # variables
-    CSV = 'files/csv-eng'
-    TXT = 'files/txt-eng'
+    CSV = args.csv
+    TXT = args.txt
 
     # Group transformation (no nesting, no indices, no NA values)
     group = ['CB', 'COPA', 'RTE', 'BoolQ']

@@ -1,3 +1,5 @@
+import argparse
+
 import pandas as pd
 import os
 from collections import defaultdict
@@ -219,12 +221,21 @@ def txt2csv_record(task_path, save_path):
 if __name__ == '__main__':
     # important WSC and ReCoRD datasets contain mistakes as ORIGINAL datasets:
 
+    parser = argparse.ArgumentParser(
+        description='Format conversion tool'
+    )
+
+    parser.add_argument('--txt', required=True)
+    parser.add_argument('--csv', required=True)
+
+    args = parser.parse_args()
+
     # variables
-    TASKS = ['CB', 'COPA', 'MultiRC', 'ReCoRD', 'RTE', 'WSC']
-    TXT = 'files/txt-eng'
-    CSV = 'files/csv-eng-reverse'
+    TXT = args.txt
+    CSV = args.csv
 
     # create empty directories
+    TASKS = ['CB', 'COPA', 'MultiRC', 'ReCoRD', 'RTE', 'WSC']
     make_dirs(CSV, TASKS)
 
     # Group: no nesting, no indices, no NA values

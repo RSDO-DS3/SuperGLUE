@@ -2,6 +2,7 @@ import pandas as pd
 import os
 from unflatten import unflatten
 import jsonlines
+import argparse
 
 def test_jsonl(org, rev, file):
     org = pd.read_json(org, lines=True)
@@ -39,9 +40,18 @@ def csv2jsonl(json_eng, csv_eng):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='Format conversion tool'
+    )
+
+    parser.add_argument('--csv', required=True)
+    parser.add_argument('--json', required=True)
+
+    args = parser.parse_args()
+
     # variables
-    CSV = 'files/csv-eng-reverse'
-    JSON = 'files/jsonl-eng-reverse'
+    CSV = args.csv
+    JSON = args.csv
 
     for dataset in os.listdir(CSV):
         print(dataset)

@@ -1,3 +1,5 @@
+import argparse
+
 import jsonlines
 import pandas as pd
 import os
@@ -61,9 +63,18 @@ def jsonl2csv(json_eng, csv_eng):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='Format conversion tool'
+    )
+
+    parser.add_argument('--json', required=True)
+    parser.add_argument('--csv', required=True)
+
+    args = parser.parse_args()
+
     # variables
-    JSON = 'files/jsonl-eng'
-    CSV = 'files/csv-eng'
+    JSON = args.json
+    CSV = args.csv
 
     for dataset in os.listdir(JSON):
         print(dataset)
