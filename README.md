@@ -3,10 +3,8 @@
 V tem repozitoriju se nahaja rezultat aktivnosti A3.5 - R3.5.1 Orodje za delo z evalvacijskimi nalogami in za primerjavo različnih postopkov.
 
 #### Povezave, vezane na orodje:
-* SuperGLUE: https://super.gluebenchmark.com/tasks
-* GoogleMT: https://kt-cloud.ijs.si/index.php/s/3HjS8QSksdLDsak
-* HumanT: https://kt-cloud.ijs.si/index.php/s/QRzXft4R3bZGG2z
-* Statistika prevodov: https://docs.google.com/spreadsheets/d/1p-2rZW-PZLfBmxJ63S-CD75DO0WLDGMCYWd0xuAGrlA/edit?usp=sharing
+* opisi nalog in dodatne informacije o SuperGLUE: https://super.gluebenchmark.com/tasks
+* prevodi SuperGLUE: https://www.clarin.si/repository/xmlui/handle/11356/1380
 
 #### Uporaba:
 
