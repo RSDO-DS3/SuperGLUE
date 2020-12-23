@@ -1,6 +1,6 @@
-# R3.5.1 - Orodje za delo z evalvacijskimi nalogami (SuperGLUE)
+# Orodje za delo z evalvacijskimi nalogami (SuperGLUE)
 
-V tem repozitoriju se nahaja rezultat aktivnosti A3.5 - R3.5.1 Orodje za delo z evalvacijskimi nalogami in za primerjavo različnih postopkov.
+V tem repozitoriju se nahaja rezultat aktivnosti A3.5 - R3.5.1 Orodje za delo z evalvacijskimi nalogami in za primerjavo različnih postopkov, ki je nastal v okviru projekta [Razvoj slovenščine v digitalnem okolju](https://www.cjvt.si/rsdo/).
 
 #### Povezave, vezane na orodje:
 * opisi nalog in dodatne informacije o SuperGLUE: https://super.gluebenchmark.com/tasks
@@ -23,3 +23,7 @@ Na primer, prvi argument skripte, ki prevaja iz txt v csv, bo `--txt`, drugi pa 
 > Operacijo Razvoj slovenščine v digitalnem okolju sofinancirata Republika Slovenija in Evropska unija iz Evropskega sklada za regionalni razvoj. Operacija se izvaja v okviru Operativnega programa za izvajanje evropske kohezijske politike v obdobju 2014-2020.
 
 ![](Logo_EKP_sklad_za_regionalni_razvoj_SLO_slogan.jpg)
+
+> This work is supported by European Union’s Horizon 2020 research and  innovation programme under grant agreement No 825153, project EMBEDDIA (Cross-Lingual Embeddings for Less-Represented Languages in European News Media).
+
+![](01_Basic_JPG_RGB_small_150.jpg)
